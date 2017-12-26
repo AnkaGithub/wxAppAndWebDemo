@@ -1,6 +1,6 @@
 module.exports = {
-  domain: '',
-  staticFileUrl: '',
-  uploadFileUrl: '',
-  getEvnBaseUrl: ''
+  domain: 'http://',
+  staticFileUrl: 'http://',
+  uploadFileUrl: 'http://',
+  getEvnBaseUrl: 'http://'
 }
