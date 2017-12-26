@@ -1,0 +1,25 @@
+<style lang="less"></style>
+<template>
+  <view class="container"></view>
+</template>
+
+<script>
+  import wepy from 'wepy'
+
+  export default class LoginWpy extends wepy.page {
+    config = {
+      navigationBarTitleText: '登录中……'
+    }
+    components = {}
+
+    data = {}
+
+    methods = {}
+
+    events = {}
+
+    onLoad() {
+      console.log()
+    }
+  }
+</script>

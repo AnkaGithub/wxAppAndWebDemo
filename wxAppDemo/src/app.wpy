@@ -1,0 +1,80 @@
+<style lang="less">
+  @import "./style/common.less";
+</style>
+
+<script>
+  import wepy from 'wepy'
+  import 'wepy-async-function'
+  import evnBase from './js/evnBase'
+  import util from './js/util'
+
+  export default class extends wepy.app {
+    config = {
+      pages: [
+        'pages/login'
+      ],
+      window: {
+        backgroundTextStyle: 'light',
+        navigationBarBackgroundColor: '#fff',
+        navigationBarTitleText: 'wxAppDemo',
+        navigationBarTextStyle: 'black'
+      },
+      networkTimeout: {
+        request: 100000,
+        downloadFile: 100000
+      }
+    }
+
+    globalData = {
+      evnBase: evnBase,
+      userInfo: null
+    }
+
+    constructor() {
+      super()
+      this.use('requestfix')
+    }
+
+    async onLaunch() {
+      util.showLoading()
+      // 加载配置，实现访问不懂环境
+      let getEvnBaseUrl = this.globalData.getEvnBaseUrl
+      let evnBaseNew = await this.getEvnBase()
+      evnBaseNew.getEvnBaseUrl = getEvnBaseUrl
+      this.globalData.evnBase = evnBaseNew
+      // 获取用户信息
+      this.globalData.userInfo = await util.getUserInfo()
+    }
+
+    // 获取基础配置
+    getEvnBase() {
+      let that = this
+      let getEvnBaseUrl = that.globalData.evnBase.getEvnBaseUrl
+      console.log(getEvnBaseUrl)
+      return that.globalData.evnBase
+//      return new Promise((resolve, reject) => {
+//        wepy.request({
+//          url: getEvnBaseUrl,
+//          method: 'POST',
+//          data: {},
+//          success: function (res) {
+//            if (res.data.errcode != 0) {
+//              console.error(res)
+//              util.showToast(res.data.errmsg, 0)
+//              return
+//            }
+//            resolve(res.data.info)
+//          },
+//          fail: function (res) {
+//            util.error(res)
+//            (async () => {
+//              await util.sleep()
+//              let r = await that.getEvnBase()
+//              resolve(r)
+//            })()
+//          }
+//        })
+//      })
+    }
+  }
+</script>
