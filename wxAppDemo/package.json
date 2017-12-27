@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "cross-env NODE_ENV=dev wepy build --watch",
     "buildDev": "cross-env NODE_ENV=buildDev wepy build --no-cache & node ./clean.js",
-    "buildPro": "cross-env NODE_ENV=buildPro wepy build --no-cache & clean node ./clean.js",
+    "buildPre": "cross-env NODE_ENV=buildPre wepy build --no-cache & node ./clean.js",
     "build": "cross-env NODE_ENV=production wepy build --no-cache & node ./clean.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

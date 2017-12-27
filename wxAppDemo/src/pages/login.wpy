@@ -1,6 +1,8 @@
 <style lang="less"></style>
 <template>
-  <view class="container"></view>
+  <view class="container">
+    <view class="v1">pppppppppppppp</view>
+  </view>
 </template>
 
 <script>
@@ -19,7 +21,12 @@
     events = {}
 
     onLoad() {
-      console.log()
+      wx.hideLoading()
+      setTimeout(() => {
+        wx.navigateTo({
+          url: 'pages/index'
+        })
+      }, 7000)
     }
   }
 </script>

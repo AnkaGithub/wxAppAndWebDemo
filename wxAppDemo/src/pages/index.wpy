@@ -1,0 +1,29 @@
+<style lang="less">
+  @import "../style/variableBase.less";
+</style>
+<template>
+  <view class="container">
+    <button>测试样式</button>
+  </view>
+</template>
+
+<script>
+  import wepy from 'wepy'
+
+  export default class IndexWpy extends wepy.page {
+    config = {
+      navigationBarTitleText: 'Index'
+    }
+    components = {}
+
+    data = {}
+
+    methods = {}
+
+    events = {}
+
+    onLoad() {
+      console.log()
+    }
+  }
+</script>
